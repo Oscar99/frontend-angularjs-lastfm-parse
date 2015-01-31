@@ -1,10 +1,7 @@
-# Intermediate AngularJS with LastFM and Parse
-You can use the code of the Lastfm project, we will be adding more features here.
+# Learning AngularJS with LastFM
+In this project you must use Github's public timeline to build a table of all events.
 We will use the Last.FM api for this project. Go to http://www.last.fm/api to learn
 how to use it.
-
-We will use [Parse API](https://parse.com/docs/js_guide) to enable users to sign up and log in to their sites.
-The applications ID and Key that you must use are located in [parse.txt](parse.txt).
 
 
 ## Prepare project
@@ -20,18 +17,11 @@ sudo npm install
 sudo bower install
 ```
 
-These commands will install all the necessary libraries and frameworks including: AngularJS, Jasmine and
-Parse in a folder called **bower_components**.
-
 
 ## User Stories
-- As a user I must be able to sign up for account with my Name, Username and Password.
+- As a user I must be able to view all the Github events in an organized fashion (use table)
 
-- As a user I must be able to log in with my new account using my Username and Password.
-
-- As a user I must be able to view all Top Songs in order.
-
-- As a user I must be able to filter the information by Artist, Song Duration and View Counts.
+- As a user I must be able to filter the information in the table by event type,
 
 
 ## i/o
@@ -39,5 +29,6 @@ Parse in a folder called **bower_components**.
 
 
 ## Reflection Q's
-1. What is Parse doing in the background?
-2. What steps did you take to implement sign up? How can you verify it's correct?
+1. What is the general organization of AngularJS projects?
+2. What do you think AngularJS is doing in the background?
+3. What does dependency injection mean?
