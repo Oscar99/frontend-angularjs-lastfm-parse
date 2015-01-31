@@ -1,4 +1,4 @@
-/Starting parse
+//Starting parse
 Parse.initialize("o738tDIjX7Oq1jSB1PtSG6LfVeZqOgpaKH0pK3dt", "p7JfKdqPlYwWoenFcH1pnxR73YDzNaHAjz6iAwhq");
 //Starting angular and setting routes
 var angularTesting = angular.module('angularTesting', ["ngRoute"]).config(function($routeProvider) {
