@@ -49,34 +49,54 @@
 			  	</a>
 		</div>
 		<!--Login And Sign in-->
-		<div class ="container">
-			<div ng-hide="currentUser">
-    			<div class="form-group">
-				    <form class="navbar-form navbar-left" role="search" ng-show="scenario == 'Sign up'">
-						<h2 class="titulo">Sign up</h2>
-						<p class="mail">  Email:</p> <input type="email"  class="form-control"  ng-model="user.email" /><br />
-						<p class="user"> Username: </p><input type="text" class="form-control" ng-model="user.username" /><br />
-						<p class="pass"> Password:</p> <input type="password" class="form-control" ng-model="user.password" /><br />
-						<br>
-						<button type="button" class="btn btn-primary"ng-click="signUp(user)">Sign up</button>
-						or <a href="#" ng-click='scenario="Log in"'>Log in</a>
-				    </form>
+		<div class="row accountRow">
+			<div class="col-md-2"></div>
+			<div class="col-md-8 text-center">
+				<div ng-show="currentUser">	
+					<h1 class="titulo">Welcome {{currentUser.get('username')}}</h1>
+					<p  class="titulo"> You have been successfully logged in</p>
+					<button ng-click="logOut(user)">Log out</button>
 				</div>
-	    		<div class="form-group">
-					<form  class="navbar-form navbar-left" role="search" ng-show="scenario == 'Log in'">
-						<h2 class="titulo">Log in</h2>
-						<p class="user"> Username:</p> <input type="text" class="form-control" ng-model="user.username" /><br />
-						<p class="pass"> Password:</p> <input type="password" class="form-control" ng-model="user.password" /><br />
-						<button type="button" class="btn btn-primary" ng-click="logIn(user)">Log in</button>
-						or <a href="#" ng-click='scenario="Sign up"'>Sign up</a>
-					</form>
-				</div>
-  			</div>
- 			<div ng-show="currentUser">
-				<h1 class="titulo">Welcome {{currentUser.get('username')}}</h1>
-				<p  class="titulo"> You have been successfully logged in</p>
-				<button ng-click="logOut(user)">Log out</button>
 			</div>
+			<table class="table" ng-hide="currentUser">
+				<thead>
+					<tr>	
+					</tr>
+				</thead>
+				<tbody >
+					<tr>
+						<td>
+						<td>
+						<td>	
+						<td>
+						<td>	
+							<td>
+								<form class="navbar-form navbar-left" role="search">
+								<h2 class="titulo">Sign up</h2>
+								<p class="mail">  Email:</p> <input type="email"  class="form-control"  ng-model="user.email" /><br />
+								<p class="user"> Username: </p><input type="text" class="form-control" ng-model="user.username" /><br />
+								<p class="pass"> Password:</p> <input type="password" class="form-control" ng-model="user.password" /><br />
+								<br>
+								<button type="button" class="btn btn-primary"ng-click="signUp(user)">Sign up</button>
+							</form>			
+						</td>
+						</td>
+						</td>
+						</td>
+						</td>
+						</td>
+						<td>
+							<form class="navbar-form navbar-left" role="search">
+								<h2 class="titulo">Log in</h2>
+								<p class="user"> Username:</p> <input type="text" class="form-control" ng-model="user.username" /><br />
+								<p class="pass"> Password:</p> <input type="password" class="form-control" ng-model="user.password" /><br />
+								<br>
+								<button type="button" class="btn btn-primary" ng-click="logIn(user)">Log in</button>
+							</form>						
+						</td>
+					</tr>
+				</tbody>
+			</table>
 		</div>
 		<script type="text/javascript" src="bower_components/jquery/dist/jquery.min.js"></script>
 		<script type="text/javascript" src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
