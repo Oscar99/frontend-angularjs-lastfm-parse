@@ -1,0 +1,58 @@
+<div ng-app="angularTesting">
+		
+		<div  class "container" ng-controller="SearchController">	
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<div class="input-group">
+	 						 <span class="input-group-addon"><i class ="glyphicon glyphicon-filter"></i></span> 
+	 							<input type="text" class="form-control" placeholder ="Search" ng-model="buscar">
+	 					</div><!--input-group-->
+	 				</div><!--btn-->
+	 			</div><!--Heading-->
+	 		<div class="panel-body">
+	 				<table class="table table-striped">	
+					<thead class = "titulos">		
+						<tr>
+							<th></th>
+							<th>
+								<a href="" ng-click="orderBy('name')">	
+		 							Name </a>
+		 							<span class="caret" style="cursor: pointer" ng-click="orderBy('-name')"></span>
+							</th>
+							
+							<th>
+								<a href="" ng-click="orderBy('artist.name')">	
+		 							Artist </a>
+		 							<span class="caret" style="cursor: pointer" ng-click="orderBy('-artist.name')"></span></th>
+		 					<th>
+		 						<a href="" ng-click="orderBy('-playcount')">	
+		 							Play Counts </a>
+		 							<span class="caret" style="cursor: pointer" ng-click="orderBy('playcount')"></span></th>
+		 						</th>
+		 					<th>
+		 						<a href="" ng-click="orderBy('-listeners')">	
+		 							Listeners </a>
+		 							<span class="caret" style="cursor: pointer" ng-click="orderBy('listeners')"></span>
+		 						</th>
+		 					<th>
+		 						<a href="" ng-click="orderBy('-duration')">	
+		 							Duration </a>
+		 							<span class="caret" style="cursor: pointer" ng-click="orderBy('duration')"></span>
+		 						</th>
+	 					</tr>
+					</thead>
+					<tbody ng-repeat="nombre in phones | orderBy:orderSelect | filter : buscar ">
+						<tr>
+							<td ng-show="{{nombre.image[1]}}"><img ng-src="{{nombre.image[1] | pictureSong}}"></td>
+							<td ng-show="!{{nombre.image[1]}}"><img src="http://www.mikepavelka.com/wp-content/themes/method/images/itunes-logo-small.png"></td>
+							<td>{{nombre.name}}</td>
+							<td>{{nombre.artist.name}}</td>		
+							<td>{{nombre.playcount}}</td>
+							<td>{{nombre.listeners}}
+							<td>{{nombre.duration*1000 | date: 'mm:ss'}}</td>							
+						</tr>
+					</tbody>		
+				</table>
+			</div>
+		</div>	
+	</div>
