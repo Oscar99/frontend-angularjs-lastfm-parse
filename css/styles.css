@@ -4,9 +4,7 @@ body{
 .titulo{
 	color: white;
 }
-.btn-primary{
-	color: white;	
-}
+
 .mail{
 	color: white;	
 }
@@ -15,4 +13,7 @@ body{
 }
 .user{
 	color: white;
+}
+.url{
+	color: white;	
 }
