@@ -1,61 +1,108 @@
-<nav class="navbar navbar-default">
+    <nav class="navbar navbar-inverse">
 	<div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
 			<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
 				<span class="sr-only">Toggle navigation</span>
-				<span class="glyphicon glyphicon-align-justify"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
 			</button>
-				<a href="#/">
-			<img src="sketch/last_fm_logo.png" alt="brand"></a>
+			<a class="navbar-brand" href="#">List songs LastFM</a>
+			<img src="sketch/last_fm_logo.png" class = "musicaImg">
 		</div>
+
 		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div ng-app = "authApp">
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-			<form class="navbar-form navbar-brand">
-				<div class="input-group">
-					<input type="text" class="form-control" placeholder="Search something" ng-model="buscar"></input>
-					<span class="input-group-addon">
-						<i class="glyphicon glyphicon-search"></i>
-					</span>
-				</div>
-				<select name="select">
-					<option ng-click="ordenarPor('artist.name')" value="value1" selected>Artista</option> 
-					<option ng-click="ordenarPor('name')">Cancion</option>
-					<option ng-click="ordenarPor('duration')">Duracion</option>
-				</select>
-			</form>
 			<ul class="nav navbar-nav navbar-right">
-				<h4>Bienvenido <strong><u>{{currentUser.get('username')}}</u></strong></h4>
-					<button ng-click="logOut(user)" class="blackButton">Cerrar sesion</button>
+				
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Filter <span class="caret"></span></a>
+	         <ul class="dropdown-menu" role="menu">
+            <li><a ng-click="ordenarPor('artist.name')">Name Artits</a></li>
+            <li class="divider"></li>
+            <li><a  ng-click="ordenarPor('name')">Name Song</a></li>
+            <li class="divider"></li>
+            <li><a ng-click="ordenarPor('duration')">Duration song</a></li>
+            <li class="divider"></li>
+            <li><a ng-click="ordenarPor('playcount')"> Play Count</a></li>
+            <li class="divider"></li>
+            <li><a ng-click="ordenarPor('listeners')">Listeners</a></li>
+          </ul>
+				</li>
+				<li><a href="#/" ng-click="logOut(user)">Log out</a></li>
+        		<li><a>Welcome {{currentUser.get('username')}}</a></li>
+                  <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+<input type="text" class="form-control" placeholder="search songs" ng-model="buscar">
+        </div>
+      </form>
 			</ul>
-			
+
 		</div><!-- /.navbar-collapse -->
+		 </div>
 	</div><!-- /.container-fluid -->
 </nav>
-<div ng-app="angularTesting">
-	<div class="container">
-		<div class="row">
-			<div ng-controller="jsonData">
-				<div class="row">
-					<table class="table table-hover">
-						<tbody>
-							<tr>
-								<th>Album</th>
-								<th>Nombre<span class="glyphicon glyphicon-chevron-up" style="cursor: pointer" ng-click="ordenarPor('-name')"></span><span class="glyphicon glyphicon-chevron-down" style="cursor: pointer" ng-click="ordenarPor('name')"></span></th>
-								<th>Artist  <span class="glyphicon glyphicon-chevron-up" style="cursor: pointer" ng-click="ordenarPor('-artist.name')"></span><span class="glyphicon glyphicon-chevron-down" style="cursor: pointer" ng-click="ordenarPor('artist.name')"></span></th>
-								<th>Duration  <span class="glyphicon glyphicon-chevron-up" style="cursor: pointer" ng-click="ordenarPor('-duration')"></span><span class="glyphicon glyphicon-chevron-down" style="cursor: pointer" ng-click="ordenarPor('duration')"></span></th>
-							</tr>
-							<tr ng-repeat="dato in track | orderBy:ordenSeleccionado | filter:buscar">
-								<td ng-show="{{dato.image[1]}}"><img ng-src="{{dato.image[1] | soloUrl}}" alt="image not found"></td>
-								<td ng-show="!{{dato.image[1]}}"><img src="images/NoCover.jpg" alt="image not found"></td>
-								<td><a href="{{dato.url}}" target="blank" title="Click me">{{dato.name}}</a></td>
-								<td><a href="{{dato.artist.url}}" target="blank" title="Click me">{{dato.artist.name}}</a></td>
-								<td>{{dato.duration *1000 | date: 'mm:ss'}}</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</div><!--jsonData controller-->
-		</div><!--Row-->
-	</div><!--Container-->
-</div> 
+<div class="panel panel-primary" ng-app = "miApp">
+
+	<div ng-controller = "jsonData">
+  <div class="panel-heading">
+    <div class="input-group">
+      <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+      
+    </div>
+  </div>
+  <div class="panel-body">
+           <table class="table table-striped">
+          <thead>
+          <tr>
+            <th>Imagen</th>
+            <th>
+            <a href="" ng-click="ordenarPor('artist.name')">
+                Name Artist
+              </a>
+              <span class="caret" style="cursor: pointer" ng-click="ordenarPor('-artist.name')"></span>
+            </th>
+            <th>
+              <a href="" ng-click="ordenarPor('name')">
+                Name's sound
+              </a>
+              <span class="caret" style="cursor: pointer" ng-click="ordenarPor('-name')"></span>
+            </th>
+            <th>
+            <a href="" ng-click="ordenarPor('duration')">
+                Duration
+              </a>
+              <span class="caret" style="cursor: pointer" ng-click="ordenarPor('-duration')"></span>
+            </th>
+            <th>
+            <a href="" ng-click="ordenarPor('playcount')">
+                Play Count
+              </a>
+              <span class="caret" style="cursor: pointer" ng-click="ordenarPor('-playcount')"></span>
+            </th>
+            <th>
+            <a href="" ng-click="ordenarPor('listeners')">
+                Listeners
+              </a>
+              <span class="caret" style="cursor: pointer" ng-click="ordenarPor('-listeners')"></span>
+            </th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr ng-repeat="data in track | orderBy:ordenSeleccionado | filter:buscar">
+                    <td ng-show="{{data.image[1]}}"><img ng-src="{{data.image[1] | soloUrl}}"></td>
+                    <td ng-show="!{{data.image[1]}}"><img src="https://browshot.com/static/images/not-found.png" width="65px"></td>
+                    <td>{{data.artist.name}}</td>
+                    <td>{{ data.name }} </td>
+                    <td>{{data.duration * 1000 | date:'mm:ss'}}</td>
+                    <td>{{data.playcount}} </td>
+                    <td>{{data.listeners}}</td>
+          </tr>
+          </tbody>
+        </table>
+  </div>
+  </div>
+</div>
+

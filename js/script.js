@@ -1,22 +1,22 @@
-//Starting parse
+
 Parse.initialize("o738tDIjX7Oq1jSB1PtSG6LfVeZqOgpaKH0pK3dt", "p7JfKdqPlYwWoenFcH1pnxR73YDzNaHAjz6iAwhq");
-//Starting angular and setting routes
-var angularTesting = angular.module('angularTesting', ["ngRoute"]).config(function($routeProvider) {
+
+var app = angular.module('newApp', ["ngRoute"]).config(function($routeProvider) {
   $routeProvider
   .when('/', {
     templateUrl: 'login.html'
   })
-  .when('/songs', {
+  .when('/listsongs', {
     controller: 'jsonData',
-    templateUrl: 'listsongs.html'
+    templateUrl: 'songs.html'
   })
   .otherwise({
     redirectTo: '/'
   });
 }).run(['$rootScope', "$location", function($scope, $location) {
-  $scope.scenario = 'Sign up';
   $scope.currentUser = Parse.User.current();
-  $scope.signUp = function(form, newPath) {
+  
+  $scope.signUp = function(form) {
     var user = new Parse.User();
     user.set("email", form.email);
     user.set("username", form.username);
@@ -25,7 +25,6 @@ var angularTesting = angular.module('angularTesting', ["ngRoute"]).config(functi
     user.signUp(null, {
       success: function(user) {
         $scope.currentUser = user;
-        $location.path(newPath);
         $scope.$apply();
       },
       error: function(user, error) {
@@ -50,21 +49,18 @@ var angularTesting = angular.module('angularTesting', ["ngRoute"]).config(functi
   $scope.logOut = function(form) {
     Parse.User.logOut();
     $scope.currentUser = null;
-    $location.path("/login");
   };
 }]);
 
 
-//Getting only the url of music object
-angularTesting.filter("soloUrl", function(){
+app.filter("soloUrl", function(){
   return function(item){
     return (JSON.stringify(item)).slice(10,-18);
   };
 });
-//Hidding message for forgot password
-angularTesting.forgotPass="False";
-//Getting json
-angularTesting.controller('jsonData', function ($scope, $http) {
+
+
+app.controller('jsonData', function ($scope, $http) {
   
     $http.get('http://ws.audioscrobbler.com/2.0/?method=chart.gettoptracks&api_key=85b8c37b1a6be5182a5ed0549c4a7400&format=json').success(function(data) {
       $scope.track = data.tracks.track;

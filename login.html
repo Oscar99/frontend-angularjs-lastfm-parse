@@ -1,4 +1,5 @@
-<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">  
+<!--Carousel-->
+		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">  
 			<ol class="carousel-indicators">
 			    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
 			    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
@@ -30,53 +31,46 @@
 				    <span class="sr-only">Next</span>
 			  	</a>
 		</div>
-		<!--Login And Sign in-->
-		<div class="row accountRow">
-			<div class="col-md-2"></div>
-			<div class="col-md-8 text-center">
-				<div ng-show="currentUser">	
-					<h1 class="titulo">Welcome {{currentUser.get('username')}}</h1>
-					<button   type="button" class="btn btn-primary" onclick="location.href='#/songs" class="blackButton">Go to the song's</button>
-					<button  type="button" class="btn btn-primary" ng-click="logOut(user)">Log out</button>
-				</div>
-			</div>
-			<table class="table" ng-hide="currentUser">
-				<thead>
-					<tr>	
-					</tr>
-				</thead>
-				<tbody >
-					<tr>
-						<td>
-						<td>
-						<td>	
-						<td>
-						<td>	
-							<td>
-								<form class="navbar-form navbar-left" role="search">
+		
+		<div class="col-md-2"></div>
+		<div class="col-md-8 text-center">
+			<table class="table">
+				<tbody ng-app="authApp">	
+					<tr ng-hide="currentUser">
+				 		<td>
+						    <form class="navbar-form navbar-left" role="search">
+								<h2 class="titulo">Log in</h2>
+								<p class="user"> Username:</p> <input type="text" class="form-control" ng-model="user.username" /><br />
+								<p class="pass"> Password:</p> <input type="password" class="form-control" ng-model="user.password" /><br />
+								<br>
+								<button type="button" class="btn btn-primary" ng-click="logIn(user)">Log in</button>
+							</form>	
+					    </td>
+					 	<td>
+					 		<form class="navbar-form navbar-left" role="search">
 								<h2 class="titulo">Sign up</h2>
 								<p class="mail">  Email:</p> <input type="email"  class="form-control"  ng-model="user.email" /><br />
 								<p class="user"> Username: </p><input type="text" class="form-control" ng-model="user.username" /><br />
 								<p class="pass"> Password:</p> <input type="password" class="form-control" ng-model="user.password" /><br />
 								<br>
 								<button type="button" class="btn btn-primary"ng-click="signUp(user)">Sign up</button>
-							</form>			
-						</td>
-						</td>
-						</td>
-						</td>
-						</td>
-						</td>
-						<td>
-							<form class="navbar-form navbar-left" role="search">
-								<h2 class="titulo">Log in</h2>
-								<p class="user"> Username:</p> <input type="text" class="form-control" ng-model="user.username" /><br />
-								<p class="pass"> Password:</p> <input type="password" class="form-control" ng-model="user.password" /><br />
-								<br>
-								<button type="button" class="btn btn-primary" ng-click="logIn(user)">Log in</button>
-							</form>						
-						</td>
+							</form>	    
+						</td> 
+				
+					</tr>
+					<tr>  
+						  <div ng-show="currentUser">
+						    <h1>Welcome {{currentUser.get('username')}}</h1>
+						    <p> You have been successfully logged in</p>
+						    <a href="#/listsongs/">list song</a>
+						    <button  type="button" class="btn btn-primary" ng-click="logOut(user)">Log out</button>
+						  </div>
 					</tr>
 				</tbody>
 			</table>
 		</div>
+		
+
+
+		
+					
