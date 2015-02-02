@@ -1,4 +1,4 @@
-    <nav class="navbar navbar-primary">
+    <nav class="navbar navbar-danger">
 	<div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
@@ -91,7 +91,7 @@
           <tbody>
           <tr ng-repeat="data in track | orderBy:ordenSeleccionado | filter:buscar">
                     <td ng-show="{{data.image[1]}}"><img ng-src="{{data.image[1] | soloUrl}}"></td>
-                    <td ng-show="!{{data.image[1]}}"><img src="https://browshot.com/static/images/not-found.png" width="65px"></td>
+                    <td ng-show="!{{data.image[1]}}"><img src="http://www.mikepavelka.com/wp-content/themes/method/images/itunes-logo-small.png" ></td>
                     <td>{{data.artist.name}}</td>
                     <td>{{ data.name }} </td>
                     <td>{{data.duration * 1000 | date:'mm:ss'}}</td>
