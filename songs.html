@@ -1,4 +1,4 @@
-    <nav class="navbar navbar-inverse">
+    <nav class="navbar navbar-danger">
 	<div class="container-fluid">
 		<!-- Brand and toggle get grouped for better mobile display -->
 		<div class="navbar-header">
@@ -8,32 +8,31 @@
 				<span class="icon-bar"></span>
 				<span class="icon-bar"></span>
 			</button>
-			<a class="navbar-brand" href="#">List songs LastFM</a>
-			<img src="sketch/last_fm_logo.png" class = "musicaImg">
+			
 		</div>
 
 		<!-- Collect the nav links, forms, and other content for toggling -->
 		<div ng-app = "authApp">
 		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav navbar-right">
-				
+				<li><a>Welcome {{currentUser.get('username')}}</a></li>
+        
 				<li class="dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Filter <span class="caret"></span></a>
 	         <ul class="dropdown-menu" role="menu">
-            <li><a ng-click="ordenarPor('artist.name')">Name Artits</a></li>
+            <li><a ng-click="ordenarPor('artist.name')"> Artits</a></li>
             <li class="divider"></li>
-            <li><a  ng-click="ordenarPor('name')">Name Song</a></li>
+            <li><a  ng-click="ordenarPor('name')"> Song</a></li>
             <li class="divider"></li>
-            <li><a ng-click="ordenarPor('duration')">Duration song</a></li>
+            <li><a ng-click="ordenarPor('duration')">Duration </a></li>
             <li class="divider"></li>
             <li><a ng-click="ordenarPor('playcount')"> Play Count</a></li>
             <li class="divider"></li>
             <li><a ng-click="ordenarPor('listeners')">Listeners</a></li>
           </ul>
-				</li>
-				<li><a href="#/" ng-click="logOut(user)">Log out</a></li>
-        		<li><a>Welcome {{currentUser.get('username')}}</a></li>
-                  <form class="navbar-form navbar-right" role="search">
+				</li> 
+        <li><a href="#/" ng-click="logOut(user)">Log out</a></li>		
+       <form class="navbar-form navbar-right" role="search">
         <div class="form-group">
 <input type="text" class="form-control" placeholder="search songs" ng-model="buscar">
         </div>
@@ -44,29 +43,26 @@
 		 </div>
 	</div><!-- /.container-fluid -->
 </nav>
-<div class="panel panel-primary" ng-app = "miApp">
+<div class="panel panel-primary" ng-app = "newApp">
 
 	<div ng-controller = "jsonData">
   <div class="panel-heading">
-    <div class="input-group">
-      <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
-      
-    </div>
+    
   </div>
   <div class="panel-body">
            <table class="table table-striped">
           <thead>
           <tr>
-            <th>Imagen</th>
+            <th></th>
             <th>
             <a href="" ng-click="ordenarPor('artist.name')">
-                Name Artist
+                 Artist
               </a>
               <span class="caret" style="cursor: pointer" ng-click="ordenarPor('-artist.name')"></span>
             </th>
             <th>
               <a href="" ng-click="ordenarPor('name')">
-                Name's sound
+                Song
               </a>
               <span class="caret" style="cursor: pointer" ng-click="ordenarPor('-name')"></span>
             </th>
