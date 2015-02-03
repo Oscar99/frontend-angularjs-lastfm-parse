@@ -1,3 +1,17 @@
+function passwordValitation(password){
+ var validWord=/^[a-zA-Z0-9]*$/;
+ var Validation = validWord.test(password); 
+  if(password.length === 0){
+     return "the password can not be empty"
+ }else if (password.length > 0  && <=4){
+   
+   return "very weak password";
+  }else if(Validation==false){
+    return "they can only be numbers or letters";
+  }else{
+    return true;
+  };
+};
 
 Parse.initialize("o738tDIjX7Oq1jSB1PtSG6LfVeZqOgpaKH0pK3dt", "p7JfKdqPlYwWoenFcH1pnxR73YDzNaHAjz6iAwhq");
 
@@ -15,8 +29,9 @@ var app = angular.module('newApp', ["ngRoute"]).config(function($routeProvider) 
   });
 }).run(['$rootScope', "$location", function($scope, $location) {
   $scope.currentUser = Parse.User.current();
-  
+  $scope.passCheck = "Weak";
   $scope.signUp = function(form) {
+    if (passwordValitaion(form.password)==true) {
     var user = new Parse.User();
     user.set("email", form.email);
     user.set("username", form.username);
@@ -31,7 +46,11 @@ var app = angular.module('newApp', ["ngRoute"]).config(function($routeProvider) 
         alert("Unable to sign up:  " + error.code + " " + error.message);
       }
     });
-  };
+  }else{
+      $scope.passCheck = passwordValitation(form.password);
+      alert();
+    };
+    };
   
   $scope.logIn = function(form, newPath) {
     Parse.User.logIn(form.username, form.password, {
