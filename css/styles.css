@@ -1,5 +1,5 @@
 body{
-	background-color: red;
+	background-color: black;
 }
 .titulo{
 	color: white;
@@ -19,4 +19,7 @@ body{
 }
 .banner{
 	background-color: black;
+}
+.registro {
+	background-color: red;
 }
