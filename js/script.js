@@ -1,10 +1,10 @@
 
 Parse.initialize("o738tDIjX7Oq1jSB1PtSG6LfVeZqOgpaKH0pK3dt", "p7JfKdqPlYwWoenFcH1pnxR73YDzNaHAjz6iAwhq");
 
-var app = angular.module('miApp', ["ngRoute"]).config(function($routeProvider) {
+var app = angular.module('newApp', ["ngRoute"]).config(function($routeProvider) {
   $routeProvider
   .when('/', {
-    templateUrl: 'inicio.html'
+    templateUrl: 'login.html'
   })
   .when('/listsongs', {
     controller: 'jsonData',
