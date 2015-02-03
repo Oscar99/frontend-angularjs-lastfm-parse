@@ -2,7 +2,7 @@
 	<div class="container banner">
 		<div class = "row">	
 			<div class = "col-md-2"></div>
-			<div class = "col-md-8">
+			<div class = "col-md-10">
 				<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">  
 					<ol class="carousel-indicators">
 					    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
@@ -39,7 +39,7 @@
 		</div>
 		
 			<div class="col-md-2"></div>
-			<div class="col-md-8 text-center registro">
+			<div class="col-md-10 text-center registro">
 				<table class="table">
 					<tbody ng-app="authApp">	
 						<tr ng-hide="currentUser">
@@ -58,6 +58,7 @@
 									<p class="mail">  Email:</p> <input type="email"  class="form-control"  ng-model="user.email" /><br />
 									<p class="user"> Username: </p><input type="text" class="form-control" ng-model="user.username" /><br />
 									<p class="pass"> Password:</p> <input type="password" class="form-control" ng-model="user.password" /><br />
+									<div>Your password is:<br> {{passCheck}}</div>
 									<br>
 									<button type="button" class="btn btn-primary"ng-click="signUp(user)">Sign up</button>
 								</form>	    

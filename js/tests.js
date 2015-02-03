@@ -19,3 +19,17 @@
   });
 });
 */
+describe('$scope.grade', function() {
+  it(' It should  return a message of empty password', function() {
+    expect(passwordValitation("")).toBe("the password can not be empty");
+  });
+  it('should  to return false because the password is very weak', function() {
+    expect(passwordValitation("123")).toBe("very weak password");
+  });
+  it("should return invalid message because only accept letter and numbers", function(){
+    expect(passwordValitation("#$%@")).toBe("");
+  });
+  it("should return true and register", function(){
+    expect(passwordValitation("Imajedy1000")).toBe(true);
+  });
+});
