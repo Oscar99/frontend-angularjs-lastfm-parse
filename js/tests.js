@@ -20,16 +20,14 @@
 });
 */
 describe('$scope.grade', function() {
-  it(' It should  return a message of empty password', function() {
-    expect(passwordValitation("")).toBe("the password can not be empty");
+  it('should return false because pass is too short', function() {
+    expect( passValider("asd")).toBe("Password is too weak");
   });
-  it('should  to return false because the password is very weak', function() {
-    expect(passwordValitation("123")).toBe("very weak password");
+  it("should return invalid message", function(){
+    expect( passValider("$#$%&")).toBe("you can only enter numbers or letters");
   });
-  it("should return invalid message because only accept letter and numbers", function(){
-    expect(passwordValitation("#$%@")).toBe("");
-  });
-  it("should return true and register", function(){
-    expect(passwordValitation("Imajedy1000")).toBe(true);
+   it("should return true", function(){
+    expect( passValider("ufhaas12120")).toBe(true);
   });
 });
+

@@ -21,22 +21,26 @@
         
 				<li class="dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Filter <span class="caret"></span></a>
-	         <ul class="dropdown-menu" role="menu">
-            <li><a ng-click="ordenarPor('artist.name')"> Artits</a></li>
+	         <ul class="dropdown-menu" role="menu" id="selectOption" data-ng-model="selectedFilter" ng-options="opt as opt.name for opt in filterTypes">
+            <li><a > Artist</a></li>
             <li class="divider"></li>
-            <li><a  ng-click="ordenarPor('name')"> Song</a></li>
+            <li><a> Song</a></li>
             <li class="divider"></li>
-            <li><a ng-click="ordenarPor('duration')">Duration </a></li>
+            <li><a>Duration </a></li>
             <li class="divider"></li>
-            <li><a ng-click="ordenarPor('playcount')"> Play Count</a></li>
+            <li><a ng-click> Play Count</a></li>
             <li class="divider"></li>
-            <li><a ng-click="ordenarPor('listeners')">Listeners</a></li>
+            <li><a>Listeners</a></li>
           </ul>
 				</li> 
         <li><a href="#/" ng-click="logOut(user)">Log out</a></li>		
        <form class="navbar-form navbar-right" role="search">
         <div class="form-group">
-<input type="text" class="form-control" placeholder="search songs" ng-model="buscar">
+          <input type="text" class="form-control" placeholder="search " ng-model="buscar">
+          <input ng-show="selectedFilter.search=='buscar'" type="text" class="form-control" placeholder="Search " ng-model="buscar"></input>
+          <input ng-show="selectedFilter.search=='buscar.name'" type="text" class="form-control" placeholder="Search something" ng-model="buscar.name"></input>
+          <input ng-show="selectedFilter.search=='buscar.artist.name'" type="text" class="form-control" placeholder="Search something" ng-model="buscar.artist.name"></input>
+          <input ng-show="selectedFilter.search=='buscar.duration'" type="text" class="form-control" placeholder="Search something" ng-model="buscar.duration"></input>
         </div>
       </form>
 			</ul>
